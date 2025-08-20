@@ -1,0 +1,80 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env
+pip-log.txt
+pip-delete-this-directory.txt
+.tox
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git
+.mypy_cache
+.pytest_cache
+.hypothesis
+
+# Virtual environments
+venv/
+.venv/
+ENV/
+env/
+.ENV/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Documentation
+*.md
+docs/
+AZURE_DEPLOYMENT_GUIDE.md
+DEMO_SCRIPT.md
+KEYWORD_EXTRACTION_GUIDE.md
+PORT_CONFIGURATION.md
+RAILWAY_DEPLOYMENT_GUIDE.md
+
+# Frontend (not needed for backend)
+faq-frontend/
+node_modules/
+*.js
+*.jsx
+*.ts
+*.tsx
+package.json
+package-lock.json
+
+# Database
+*.db
+*.sqlite
+instance/
+
+# Logs
+*.log
+
+# Test files
+test_*.py
+*_test.py
+tests/
