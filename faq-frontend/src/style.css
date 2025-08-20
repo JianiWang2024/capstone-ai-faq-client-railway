@@ -140,8 +140,13 @@ body {
   border-left: 4px solid #667eea;
 }
 
-.chat-input-bar {
+/* Enhanced Chat Input Styles */
+.chat-input-container {
   margin-top: auto;
+  padding: 1.5em;
+}
+
+.chat-input-bar {
   display: flex;
   gap: 12px;
   padding: 1.5em;
@@ -150,9 +155,15 @@ body {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(226, 232, 240, 0.5);
+  transition: all 0.3s ease;
 }
 
-.chat-input-bar input {
+.chat-input-bar:focus-within {
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+  border-color: rgba(102, 126, 234, 0.3);
+}
+
+.chat-input-field {
   flex: 1;
   padding: 1em 1.25em;
   border: 2px solid rgba(226, 232, 240, 0.5);
@@ -161,15 +172,25 @@ body {
   background: rgba(255, 255, 255, 0.8);
   transition: all 0.3s ease;
   outline: none;
+  font-family: inherit;
 }
 
-.chat-input-bar input:focus {
+.chat-input-field:focus {
   border-color: #667eea;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
   background: white;
 }
 
-.chat-input-bar button {
+.chat-input-field.disabled {
+  background: rgba(226, 232, 240, 0.5);
+  color: #a0aec0;
+  cursor: not-allowed;
+}
+
+.send-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   padding: 1em 2em;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
@@ -179,15 +200,55 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  min-width: 120px;
+  justify-content: center;
 }
 
-.chat-input-bar button:hover {
+.send-button:hover:not(.disabled) {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
 }
 
-.chat-input-bar button:active {
+.send-button:active:not(.disabled) {
   transform: translateY(0);
+}
+
+.send-button.disabled {
+  background: linear-gradient(135deg, #a0aec0 0%, #718096 100%);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.send-button .send-icon {
+  font-size: 1.1em;
+}
+
+.send-button .send-text {
+  font-size: 0.9em;
+}
+
+.send-button .loading-spinner {
+  font-size: 1.1em;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Input hint styles */
+.input-hint {
+  margin-top: 0.75em;
+  text-align: center;
+}
+
+.hint-text {
+  font-size: 0.8em;
+  color: #718096;
+  opacity: 0.8;
+  font-style: italic;
 }
 
 /* Feedback section */

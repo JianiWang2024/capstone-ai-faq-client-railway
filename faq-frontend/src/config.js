@@ -8,20 +8,20 @@ export const API_CONFIG = {
     BACKEND_PORT: 5000
   },
   
-  // Production configuration (Azure 生产环境)
+  // Production configuration (Railway 生产环境)
   production: {
-    BACKEND_URL: 'https://faq-ai-system-backend.azurewebsites.net',
-    API_BASE: 'https://faq-ai-system-backend.azurewebsites.net/api',
+    BACKEND_URL: 'https://faq-ai-system-backend-production.up.railway.app',
+    API_BASE: 'https://faq-ai-system-backend-production.up.railway.app/api',
     FRONTEND_PORT: 80,
     BACKEND_PORT: 80
   }
 };
 
-// Environment detection - 强制在Azure域名下使用生产配置
+// Environment detection - 强制在Railway域名下使用生产配置
 export const isProduction = () => {
   const hostname = window.location.hostname;
-  return hostname.includes('azurewebsites.net') || 
-         hostname.includes('azurestaticapps.net') ||
+  return hostname.includes('railway.app') || 
+         hostname.includes('up.railway.app') ||
          hostname !== 'localhost' ||
          process.env.NODE_ENV === 'production';
 };
@@ -85,9 +85,9 @@ export const getEnvironmentInfo = () => {
   };
 };
 
-// 强制在Azure域名下使用生产配置
-if (window.location.hostname.includes('azurestaticapps.net')) {
-  console.log('🚀 Azure environment detected, forcing production configuration');
+// 强制在Railway域名下使用生产配置
+if (window.location.hostname.includes('railway.app') || window.location.hostname.includes('up.railway.app')) {
+  console.log('🚀 Railway environment detected, forcing production configuration');
   console.log('Forced API URL:', API_CONFIG.production.API_BASE);
   console.log('Forced backend URL:', API_CONFIG.production.BACKEND_URL);
 }

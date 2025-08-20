@@ -29,9 +29,10 @@ CORS(app,
      supports_credentials=True,
      origins=[
          "http://localhost:3000",  # 本地开发
-         "https://purple-bay-044a4fe1e-preview.westus2.1.azurestaticapps.net",  # Azure前端
-         "https://*.azurestaticapps.net",  # 所有Azure Static Web Apps
-         "https://*.azurewebsites.net"     # 所有Azure Web Apps
+         "https://*.railway.app",  # Railway生产环境
+         "https://*.up.railway.app",  # Railway预览环境
+         "https://*.vercel.app",  # Vercel部署
+         "https://*.netlify.app"  # Netlify部署
      ],
      methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
      allow_headers=["Content-Type", "Authorization", "X-Requested-With"],
@@ -40,11 +41,11 @@ CORS(app,
 
 app.config.from_object(Config)
 
-# 配置Session以确保在Azure环境中正常工作
+# 配置Session以确保在Railway环境中正常工作
 app.config.update(
     SESSION_COOKIE_SECURE=True,  # 在HTTPS下使用
     SESSION_COOKIE_HTTPONLY=True,  # 防止XSS攻击
-    SESSION_COOKIE_SAMESITE='None',  # 允许跨站请求（Azure部署需要）
+    SESSION_COOKIE_SAMESITE='None',  # 允许跨站请求（Railway部署需要）
     PERMANENT_SESSION_LIFETIME=timedelta(hours=24),  # session有效期24小时
     SESSION_COOKIE_DOMAIN=None,  # 允许跨子域名访问
     SESSION_COOKIE_PATH='/',  # 确保cookie在所有路径下可用
@@ -601,7 +602,7 @@ def health_check():
             'database_version': db_info.split()[1] if db_info else 'unknown',
             'timestamp': datetime.utcnow().isoformat(),
             'environment': app.config.get('FLASK_ENV', 'unknown'),
-            'azure_deployment': app.config.get('AZURE_DEPLOYMENT', False)
+            'railway_deployment': app.config.get('RAILWAY_DEPLOYMENT', False)
         }), 200
     except Exception as e:
         logger.error(f"Health check failed: {e}")
@@ -611,17 +612,17 @@ def health_check():
             'error': str(e),
             'timestamp': datetime.utcnow().isoformat(),
             'environment': app.config.get('FLASK_ENV', 'unknown'),
-            'azure_deployment': app.config.get('AZURE_DEPLOYMENT', False)
+            'railway_deployment': app.config.get('RAILWAY_DEPLOYMENT', False)
         }), 503
 
 if __name__ == '__main__':
     # For production deployment, use proper WSGI server
-    # Azure App Service will set PORT environment variable
+    # Railway will set PORT environment variable
     port = int(os.environ.get('PORT', 5000))
-    host = '0.0.0.0' if app.config.get('AZURE_APP_SERVICE') else '127.0.0.1'
+    host = '0.0.0.0' if app.config.get('RAILWAY_APP_SERVICE') else '127.0.0.1'
     
     logger.info(f"Starting Flask app on {host}:{port}")
     logger.info(f"Environment: {app.config.get('FLASK_ENV', 'unknown')}")
-    logger.info(f"Azure deployment: {app.config.get('AZURE_DEPLOYMENT', False)}")
+    logger.info(f"Railway deployment: {app.config.get('RAILWAY_DEPLOYMENT', False)}")
     
     app.run(debug=app.config.get('DEBUG', False), host=host, port=port)

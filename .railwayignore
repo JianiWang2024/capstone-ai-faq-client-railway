@@ -1,0 +1,52 @@
+# 忽略不需要部署到Railway的文件和目录
+
+# 开发环境文件
+.env
+.env.local
+.env.development
+.env.test
+
+# 虚拟环境
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 测试文件
+test_*.py
+*_test.py
+tests/
+
+# 文档文件
+*.md
+docs/
+AZURE_DEPLOYMENT_GUIDE.md
+DEMO_SCRIPT.md
+KEYWORD_EXTRACTION_GUIDE.md
+PORT_CONFIGURATION.md
+
+# 前端文件（后端部署不需要）
+faq-frontend/
+*.js
+*.jsx
+*.ts
+*.tsx
+package.json
+package-lock.json
+
+# 系统文件
+.DS_Store
+Thumbs.db
+*.log
+
+# 数据库文件
+*.db
+*.sqlite
+instance/
+
+# 其他
+.vscode/
+.git/
+.gitignore

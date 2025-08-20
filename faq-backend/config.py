@@ -37,9 +37,9 @@ class Config:
         'echo': os.environ.get('DB_ECHO', 'False').lower() in ['true', '1', 'yes'],
     }
     
-    # Azure-specific database settings
-    AZURE_POSTGRES_SSL_MODE = os.environ.get('AZURE_POSTGRES_SSL_MODE', 'require')
-    AZURE_POSTGRES_CONNECTION_TIMEOUT = int(os.environ.get('AZURE_POSTGRES_CONNECTION_TIMEOUT', '30'))
+    # Railway-specific database settings
+    RAILWAY_POSTGRES_SSL_MODE = os.environ.get('RAILWAY_POSTGRES_SSL_MODE', 'require')
+    RAILWAY_POSTGRES_CONNECTION_TIMEOUT = int(os.environ.get('RAILWAY_POSTGRES_CONNECTION_TIMEOUT', '30'))
     
     # OpenAI Configuration
     OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY') or 'sk-4TMyDTGXFc6xoMQiWhkkAUgoPLJqWoAZUSpNGhdPdUftcFiF'
@@ -62,6 +62,6 @@ class Config:
     FLASK_ENV = os.environ.get('FLASK_ENV', 'production')  # Default to production for Azure
     DEBUG = os.environ.get('FLASK_DEBUG', 'False').lower() in ['true', '1', 'yes']
     
-    # Azure deployment specific settings
-    AZURE_DEPLOYMENT = os.environ.get('AZURE_DEPLOYMENT', 'False').lower() in ['true', '1', 'yes']
-    AZURE_APP_SERVICE = os.environ.get('AZURE_APP_SERVICE', 'False').lower() in ['true', '1', 'yes']
+    # Railway deployment specific settings
+    RAILWAY_DEPLOYMENT = os.environ.get('RAILWAY_DEPLOYMENT', 'True').lower() in ['true', '1', 'yes']
+    RAILWAY_APP_SERVICE = os.environ.get('RAILWAY_APP_SERVICE', 'True').lower() in ['true', '1', 'yes']
