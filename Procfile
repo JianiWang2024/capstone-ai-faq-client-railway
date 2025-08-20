@@ -1,1 +1,1 @@
-web: cd faq-backend && python app.py
+web: cd faq-backend && python railway_start.py

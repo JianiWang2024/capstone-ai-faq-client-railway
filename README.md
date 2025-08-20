@@ -12,6 +12,7 @@
 - 📊 数据可视化仪表板
 - 👤 用户认证和权限管理
 - 📱 响应式Web界面
+- 🚀 Railway云部署支持（推荐）
 - 🚀 Azure云部署支持
 
 ## 技术架构
@@ -21,7 +22,7 @@
 - **AI服务**: OpenAI GPT集成
 - **数据库**: PostgreSQL (支持SQLite迁移)
 - **认证**: JWT Token
-- **部署**: Azure App Service
+- **部署**: Railway App Service（推荐）, Azure App Service
 
 ### 前端 (faq-frontend/)
 - **框架**: React.js
@@ -50,6 +51,7 @@ npm start
 ## 部署指南
 
 详细的部署说明请参考：
+- [Railway部署指南](RAILWAY_DEPLOYMENT_GUIDE.md)（推荐）
 - [Azure部署指南](AZURE_DEPLOYMENT_GUIDE.md)
 - [前端部署说明](faq-frontend/AZURE_DEPLOYMENT.md)
 - [PostgreSQL设置](faq-backend/POSTGRESQL_SETUP.md)

@@ -1,7 +1,7 @@
 # backend APIs
 # This file contains the Flask application for the FAQ API.
 # It includes endpoints to get, add, update, and delete FAQs.
-# Updated for PostgreSQL deployment on Azure
+# Updated for PostgreSQL deployment on Railway
 
 from flask import Flask, jsonify, request, make_response
 from flask_cors import CORS
@@ -592,7 +592,7 @@ def health_check():
         db.session.execute(text('SELECT 1'))
         db.session.commit()
         
-        # Get database info for Azure monitoring
+        # Get database info for Railway monitoring
         db_info = db.session.execute(text("SELECT version()")).scalar()
         
         return jsonify({

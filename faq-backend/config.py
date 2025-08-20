@@ -27,12 +27,12 @@ class Config:
     SQLALCHEMY_DATABASE_URI = DATABASE_URL
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
-    # Enhanced PostgreSQL connection options for Azure
+    # Enhanced PostgreSQL connection options for Railway
     SQLALCHEMY_ENGINE_OPTIONS = {
         'pool_pre_ping': True,
         'pool_recycle': 300,
-        'pool_size': int(os.environ.get('DB_POOL_SIZE', '10')),
-        'max_overflow': int(os.environ.get('DB_MAX_OVERFLOW', '20')),
+        'pool_size': int(os.environ.get('DB_POOL_SIZE', '5')),  # Reduced for Railway
+        'max_overflow': int(os.environ.get('DB_MAX_OVERFLOW', '10')),  # Reduced for Railway
         'pool_timeout': int(os.environ.get('DB_POOL_TIMEOUT', '30')),
         'echo': os.environ.get('DB_ECHO', 'False').lower() in ['true', '1', 'yes'],
     }

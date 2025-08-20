@@ -10,8 +10,8 @@ export const API_CONFIG = {
   
   // Production configuration (Railway 生产环境)
   production: {
-    BACKEND_URL: 'https://faq-ai-system-backend-production.up.railway.app',
-    API_BASE: 'https://faq-ai-system-backend-production.up.railway.app/api',
+    BACKEND_URL: 'https://your-app-name.up.railway.app',
+    API_BASE: 'https://your-app-name.up.railway.app/api',
     FRONTEND_PORT: 80,
     BACKEND_PORT: 80
   }
