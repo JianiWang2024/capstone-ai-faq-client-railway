@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ["python39", "pip"]
+
+[phases.install]
+cmds = ["cd faq-backend && pip install -r requirements.txt"]
+
+[start]
+cmd = "cd faq-backend && python app.py"

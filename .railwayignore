@@ -35,6 +35,7 @@ faq-frontend/
 *.tsx
 package.json
 package-lock.json
+node_modules/
 
 # 系统文件
 .DS_Store
